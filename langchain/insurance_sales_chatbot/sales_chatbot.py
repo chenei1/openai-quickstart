@@ -13,7 +13,7 @@ def initialize_sales_bot(vector_store_dir: str="real_estates_sale"):
     db = FAISS.load_local(vector_store_dir, OpenAIEmbeddings(), allow_dangerous_deserialization=True)
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
     
-    global SALES_BOT    
+    global SALES_BOT
     SALES_BOT = RetrievalQA.from_chain_type(llm,
                                            retriever=db.as_retriever(search_type="similarity_score_threshold",
                                                                      search_kwargs={"score_threshold": 0.8}))
@@ -52,7 +52,7 @@ def launch_gradio():
     demo.launch(share=True, server_name="0.0.0.0")
 
 if __name__ == "__main__":
-    # 初始化房产销售机器人
+    # 初始化保险销售机器人
     initialize_sales_bot()
     # 启动 Gradio 服务
     launch_gradio()
