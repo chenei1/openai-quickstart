@@ -8,7 +8,7 @@ from langchain_community.vectorstores import FAISS
 
 
 def initialize_sales_bot(vector_store_dir: str="real_estates_sale"):
-    os.environ["OPENAI_API_KEY"] = "sk-tdqfro61NniG2LZd5394E5F28c51419d8b4dE7Db5a6105C4"
+    os.environ["OPENAI_API_KEY"] = "sk-***"
     os.environ['OPENAI_BASE_URL'] = 'https://api.xiaoai.plus/v1'
     db = FAISS.load_local(vector_store_dir, OpenAIEmbeddings(), allow_dangerous_deserialization=True)
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
